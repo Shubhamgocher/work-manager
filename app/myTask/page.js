@@ -2,7 +2,7 @@
 
 const MyTask = () => {
   return (
-    <div>
+    <div className="text-white">
       Mytask
     </div>
   )

@@ -1,5 +1,5 @@
 import { connectDb } from "@/helper/db";
-import { User } from "@/modles/usermodel";
+import { UserModel } from "@/modles/usermodel";
 import { NextResponse } from "next/server";
 
 connectDb();
@@ -7,7 +7,7 @@ export async function GET(request,{params}){
     const {userId}=params;
     console.log(params);
     try {
-        const singleUser =await User.findById(userId);
+        const singleUser =await UserModel.findById(userId);
         return NextResponse.json(singleUser);
     } catch (error) {
         console.log(error);
@@ -24,13 +24,13 @@ export async function PUT(request,{params}){
     const {name,email,password,about}=await request.json();
     const {id}=params;
     try {
-        const singleUseruser=await User.findById(id);
+        const singleUser=await UserModel.findById(id);
         user.name=name,
         user.email=email,
         user.password=password,
         user.about=about;
 
-        const updatedUser=await singleUseruser.save();
+        const updatedUser=await singleUser.save();
         return NextResponse.json(updatedUser);
 
 
@@ -48,7 +48,7 @@ export async function PUT(request,{params}){
 export async function DELETE(request,{params}){
     const {userId}=params;
     try {
-        await User.deleteOne({
+        await UserModel.deleteOne({
             _id:userId,
         }
             

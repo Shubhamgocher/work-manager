@@ -1,6 +1,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import UserProvider from "@/context/UserProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,9 +16,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header/>
-        {children}</body>
+      <body className="bg-black " >
+      <UserProvider>
+      <ToastContainer/>
+            <div >
+              <Header/>
+            </div>
+            <div className="mb-20" >
+              {children}
+            </div>
+            <div >
+              <Footer/>
+            </div>
+          </UserProvider>
+          
+        </body>
     </html>
   );
 }

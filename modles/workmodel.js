@@ -25,4 +25,4 @@ const TaskSchema=new Schema({
         required:true,
     }
 });
-export const Task=mongoose.model.Task || mongoose.model("Task",TaskSchema);
+export const Task=mongoose.models.tasks || mongoose.model("tasks",TaskSchema);
